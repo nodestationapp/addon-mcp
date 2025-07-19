@@ -16,12 +16,13 @@ if (process.argv[2] === "generate") {
 
   try {
     let swaggerPath;
+    let mcpBinPath;
 
     const nodeModulesPath = path.join(
       rootPath,
       "node_modules",
       "@nstation",
-      "addon-docs",
+      "addon-documentation",
       "server",
       "swagger.json"
     );
@@ -36,8 +37,22 @@ if (process.argv[2] === "generate") {
 
     if (fs.existsSync(nodeModulesPath)) {
       swaggerPath = nodeModulesPath;
+      mcpBinPath = path.join(
+        rootPath,
+        "node_modules",
+        ".bin",
+        "openapi-mcp-generator"
+      );
     } else if (fs.existsSync(pluginsPath)) {
       swaggerPath = pluginsPath;
+      mcpBinPath = path.join(
+        rootPath,
+        "plugins",
+        "mcp",
+        "node_modules",
+        ".bin",
+        "openapi-mcp-generator"
+      );
     } else {
       throw new Error("Documentation plugin not found");
     }
@@ -49,7 +64,7 @@ if (process.argv[2] === "generate") {
     }
 
     await runCommand({
-      cmd: "./node_modules/.bin/openapi-mcp-generator",
+      cmd: mcpBinPath,
       __dirname: __dirname,
       args: [
         "--input",
