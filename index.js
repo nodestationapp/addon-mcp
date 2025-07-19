@@ -24,7 +24,7 @@ if (process.argv[2] === "generate") {
       "@nstation",
       "addon-documentation",
       "server",
-      "swagger.json"
+      "user-swagger.json"
     );
 
     const pluginsPath = path.join(
@@ -32,7 +32,7 @@ if (process.argv[2] === "generate") {
       "plugins",
       "docs",
       "server",
-      "swagger.json"
+      "user-swagger.json"
     );
 
     if (fs.existsSync(nodeModulesPath)) {
