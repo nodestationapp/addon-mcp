@@ -1,6 +1,6 @@
 {
   "name": "@nstation/addon-mcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "license": "MIT",
   "description": "Nodestation's MCP plugin",
@@ -8,11 +8,17 @@
     "release": "release-it",
     "generate-mcp": "openapi-mcp-generator --input ../docs/server/swagger.json --output ./mcp-server --base-url http://localhost:3000"
   },
+  "bin": {
+    "nodestation-mcp": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nodestationapp/addon-mcp.git"
   },
   "files": [
+    "index.js",
+    "./client",
+    "./server",
     "./package.json"
   ],
   "author": {
