@@ -1,0 +1,61 @@
+{
+  "name": "@nstation/addon-mcp",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "description": "Nodestation's MCP plugin",
+  "scripts": {
+    "release": "release-it",
+    "generate-mcp": "openapi-mcp-generator --input ../docs/server/swagger.json --output ./mcp-server --base-url http://localhost:3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodestationapp/addon-mcp.git"
+  },
+  "files": [
+    "./package.json"
+  ],
+  "author": {
+    "name": "Krystian Wachnicki",
+    "email": "ceo@nodestation.app"
+  },
+  "devDependencies": {
+    "openapi-mcp-generator": "^3.1.4",
+    "@release-it/conventional-changelog": "^9.0.3",
+    "release-it": "^17.10.0"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}",
+      "tagName": "v${version}",
+      "requireCleanWorkingDir": false
+    },
+    "npm": false,
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {
+            "type": "chore(deps)",
+            "section": "Chores"
+          },
+          {
+            "type": "test",
+            "section": "Tests"
+          }
+        ]
+      }
+    }
+  }
+}
